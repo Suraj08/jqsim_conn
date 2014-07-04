@@ -77,7 +77,7 @@ function CQB(opts) {
 	this.tableList = [];
 	
 	this.init = function() {
-		this.element.html("<div id='table_panel' class='panel-default'><div class='panel-heading'>Table List</div><div id='table_accordian' class=''></div><br/><br/><div class='panel-heading'>Connections : </div></div><div id='right_panel'class='panel-default'><div id = 'er_panel' class='innerPanel panel-default'><div class='panel-heading'>Query Builder</div><div id='er-diagram' class='er-diagram panel-body'><h6>Drag Tables Here</h6></div></div><div id = 'output_panel'class='innerPanel panel-default'><div class='panel-heading'>Query</div></div><div id = 'query_panel'class='innerPanel panel-default'><div class='panel-heading'>Query</div></div></div>");
+		this.element.html("<div id='table_panel' class='panel-default'><div class='panel-heading'>Table List</div><div id='table_accordian' class=''></div><br/><br/></div><div id='right_panel'class='panel-default'><div id = 'er_panel' class='innerPanel panel-default'><div class='panel-heading'>Query Builder</div><div id='er-diagram' class='er-diagram panel-body'><h6>Drag Tables Here</h6></div></div><div id = 'output_panel'class='innerPanel panel-default'><div class='panel-heading'>Query</div></div><div id = 'query_panel'class='innerPanel panel-default'><div class='panel-heading'>Query</div></div></div>");
 		
 		this.tableList = new TableList({
 			element: "table_accordian",
@@ -221,26 +221,7 @@ function ERDiagram(opts) {
         var arr=[];
 
 	
-          $( "#remove-conn1" ).click(function() {
-                   
-                   jqSimpleConnect.removeConnection(arr[1]);
-                         
-                         });
-
-            $( "#remove-conn2" ).click(function() {
-                   
-                   jqSimpleConnect.removeConnection(arr[2]);
-                         
-                         });
-
-              $( "#remove-conn3" ).click(function() {
-                   
-                   jqSimpleConnect.removeConnection(arr[3]);
-                         
-                         });
-
-	
-
+     
 	this.removeTable = function(uiId, table_name)
 	{
 
@@ -320,6 +301,8 @@ function ERDiagram(opts) {
 
              self.connections();
 
+             self.remove_first_connection();
+
 
 
 		}
@@ -367,9 +350,45 @@ function ERDiagram(opts) {
                 {
                    store1_con=con;
 
-                   arr[1]=store1_con;
-                  
-                   i++;
+                   arr[1]=store1_con;                 // moving to array
+
+
+                  var tab=document.createElement("div");
+                  tab.id="panel-heading1";
+                  var textt=document.createTextNode("Remove Connection");
+                  tab.appendChild(textt);
+                  document.getElementById("table_panel").appendChild(tab); 
+
+                    var brr = document.createElement("br");
+                   document.getElementById("table_panel").appendChild(brr); 
+
+
+
+
+                   var node=document.createElement("div");
+                   node.id="first";
+                   node.class="hover1";
+
+                    var span1=document.createElement("span");
+                    span1.id="span1";
+                    span1.innerHTML = " Remove   &nbsp" ;
+                               
+                    node.appendChild(span1);
+
+               // getting the division id then checkbox and its value
+
+                var aa= $("#" + draggableId+"").find("input").val();
+                var bb= $("#" + droppableId+"").find("input").val();
+
+
+
+                   var textnode=document.createTextNode(aa +" --> "+bb);
+                   node.appendChild(textnode);
+                   document.getElementById("table_panel").appendChild(node);
+                    var br = document.createElement("br");
+                   document.getElementById("table_panel").appendChild(br); 
+
+                 i++;
 
                    return;
                 }  
@@ -379,7 +398,27 @@ function ERDiagram(opts) {
                  {
                    store2_con=con;
 
-                    arr[2]=store2_con;
+                    arr[2]=store2_con;                 // moving to array
+
+                     var node=document.createElement("div");
+                   node.id="second";
+                    node.class="hover2";
+
+                    var span2=document.createElement("span");
+                    span2.id="span2";
+                    span2.innerHTML = " Remove   &nbsp" ;
+                               
+                    node.appendChild(span2);
+                    var aa= $("#" + draggableId+"").find("input").val();
+                    var bb= $("#" + droppableId+"").find("input").val();
+
+
+
+                   var textnode=document.createTextNode(aa +" --> "+bb);
+                   node.appendChild(textnode);
+                   document.getElementById("table_panel").appendChild(node);
+                    var br1 = document.createElement("br");
+                   document.getElementById("table_panel").appendChild(br1); 
                     
                    i++;
 
@@ -395,28 +434,119 @@ function ERDiagram(opts) {
 
                    store3_con=con;
 
-                    arr[3]=store3_con;
+                    arr[3]=store3_con;              //  moving to array
+
+                     var node=document.createElement("div");
+                   node.id="third"
+                    node.class="hover3";
+
+                    var span3=document.createElement("span");
+                    span3.id="span3";
+                    span3.innerHTML = " Remove   &nbsp" ;
+                               
+                    node.appendChild(span3);;
+                     var aa= $("#" + draggableId+"").find("input").val();        
+                var bb= $("#" + droppableId+"").find("input").val();
+
+
+
+                   var textnode=document.createTextNode(aa +" --> "+bb);                  
+                    node.appendChild(textnode);
+                   document.getElementById("table_panel").appendChild(node);
+                    var br2 = document.createElement("br");
+                   document.getElementById("table_panel").appendChild(br2); 
 
                   return;
                    
                  }  
 
 
-
-
-
-
-
-     /*      function  remove_con()                    it was a success
+               /*      function  remove_con()                    it was a success
            {
            	jqSimpleConnect.removeConnection(store1_con);
-           }   
+           
+           }   */
 
-      */
+
+           
          
  }
 
 
+                         
+
+
+
+             this.remove_first_connection=function()
+             {
+
+                           $('#first').hover(function() 
+
+
+                           	{ 
+                           		$('#span1').show();
+                           		$('#span1').hide(5000);
+
+                           	});
+
+                            $('#second').hover(function() 
+
+
+                           	{ 
+                           		$('#span2').show();
+                           		$('#span2').hide(5000);
+
+                           	});
+
+                           	 $('#third').hover(function() 
+
+
+                           	{ 
+                           		$('#span3').show();
+                           		$('#span3').hide(5000);
+
+                           	});
+
+
+     
+                
+
+
+
+                     $( "#first" ).click(function() {
+                    
+                          jqSimpleConnect.removeConnection(arr[1]);
+
+                          var parent= document.getElementById('table_panel');
+                          var child =document.getElementById("first");
+                          parent.removeChild(child);
+                         
+                         });
+
+
+                      $( "#second" ).click(function() {
+                    
+                          jqSimpleConnect.removeConnection(arr[2]);
+
+                          var parent= document.getElementById('table_panel');
+                          var child =document.getElementById("second");
+                          parent.removeChild(child);
+                         
+                         });
+
+
+                       $( "#third" ).click(function() {
+                    
+                          jqSimpleConnect.removeConnection(arr[3]);
+
+                          var parent= document.getElementById('table_panel');
+                          var child =document.getElementById("third");
+                          parent.removeChild(child);
+
+                        
+                         
+                         });
+             }
 
 
 

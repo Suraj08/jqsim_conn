@@ -1,4 +1,4 @@
-jqsim_conn
-==========
+cqb
+===
 
-Example for drag and drop connections
+Cerebrate Query Builder

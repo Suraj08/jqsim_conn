@@ -20,6 +20,75 @@ h1, h2, h3, h4, h5, h6, body, table, p, div, span, a, li {
 }
 
 
+#first
+{
+	width: 245px;
+	text-align: center;
+	border: 1px silver;
+	background-color: LightGray;
+	cursor: pointer;
+
+}
+
+#span1
+{
+	display: none;
+}
+#span2
+{
+	display: none;
+}
+#span3
+{
+	display: none;
+}
+#first:hover 
+{
+ background-color: Yellow ; 
+}
+#second:hover 
+{
+ background-color: Yellow ; 
+}
+#third:hover 
+{
+ background-color: Yellow ; 
+}
+
+
+#second
+{
+	width: 245px;
+	text-align: center;
+	border: 1px silver;
+	background-color: LightGray;
+	cursor: pointer;
+
+}
+
+
+#third
+{
+	width: 245px;
+	text-align: center;
+	border: 1px silver;
+	background-color: LightGray;
+	cursor: pointer;
+
+}
+
+#panel-heading1
+{
+	width: 245px;
+	height: 40px;
+	vertical-align: center;
+	text-align: center;
+	border: 1px silver;
+	background-color: LightGray;
+	cursor: pointer;
+}
+
+
 div.innerPanel{
 	height: 30%;
 	border: 1px solid black;
